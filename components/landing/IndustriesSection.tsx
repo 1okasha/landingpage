@@ -86,7 +86,7 @@ export function IndustriesSection() {
           <p className="font-['IBM_Plex_Mono'] text-xs font-normal uppercase leading-4 tracking-[3.6px] text-[#E8410A]">
             USE CASES
           </p>
-          <h2 className="max-w-[1216px] font-['Space_Grotesk'] text-[42px] font-normal leading-[1.04] tracking-[-1.8px] text-[#2D241E] sm:text-[56px] lg:text-[72px] lg:leading-[72px]">
+          <h2 className="heading-display max-w-[1216px] text-[#2D241E]">
             Built for Any Industry That Talks to Customers
           </h2>
           <p className="max-w-[650px] font-['Inter'] text-base font-medium leading-[29px] text-[#93846D] lg:text-lg">

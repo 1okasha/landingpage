@@ -292,8 +292,7 @@ export function ProductionSection() {
           UPLATFORM CAPABILITIES
         </p>
         <h2
-          className="font-(family-name:--font-space-grotesk) font-normal text-[72px] leading-[72px] tracking-[-1.8px] text-[#2D241E] mb-[65px]"
-          style={{ fontFamily: "var(--font-space-grotesk)", fontWeight: 400 }}
+          className="heading-display text-[#2D241E] mb-[65px]"
         >
           Built for Production.
           <br />
@@ -313,7 +312,7 @@ export function ProductionSection() {
               {EYEBROW}
             </p>
             <h3
-              className="font-(family-name:--font-space-grotesk) font-medium text-[60px] leading-[72px] tracking-[1.5px] text-[#31332C]"
+              className="heading-section text-[#31332C]"
             >
               Configure Once, Scale Forever.
             </h3>

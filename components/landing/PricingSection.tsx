@@ -175,12 +175,12 @@ export function PricingSection() {
           </div>
           <div className="flex flex-col items-center gap-[6px] w-full">
             <h2
-              className="font-[family-name:var(--font-space-grotesk)] font-normal text-[72px] leading-[72px] tracking-[-1.8px] text-[#2D241E] text-center w-full"
+              className="heading-display text-[#2D241E] text-center w-full"
             >
               Simple pricing for AI voice agents.
             </h2>
             <h2
-              className="font-[family-name:var(--font-space-grotesk)] font-normal text-[72px] leading-[92px] text-[#2D241E] text-center w-full"
+              className="heading-display text-[#2D241E] text-center w-full"
             >
               Scale conversations without limits.
             </h2>

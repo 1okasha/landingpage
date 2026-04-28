@@ -1,3 +1,7 @@
+ 'use client';
+
+import { useState } from 'react';
+
 const faqItems = [
   {
     question: 'What does "BYOK" mean exactly?',
@@ -37,6 +41,12 @@ const faqItems = [
 ];
 
 export function FaqSection() {
+  const [openItem, setOpenItem] = useState<number | null>(null);
+
+  const toggleItem = (index: number) => {
+    setOpenItem((current) => (current === index ? null : index));
+  };
+
   return (
     <section className="w-full bg-[#F4EFE7] px-6 py-10 md:py-12 lg:px-10 lg:py-[42px]" id="faq">
       <div className="mx-auto flex w-full max-w-[1230px] flex-col gap-[58px]">
@@ -44,21 +54,29 @@ export function FaqSection() {
           <p className="font-['IBM_Plex_Mono'] text-xs font-normal uppercase leading-4 tracking-[3.6px] text-[#E8410A]">
             Frequently Asked
           </p>
-          <h2 className="font-['Space_Grotesk'] text-[42px] font-normal leading-[1.04] tracking-[-1.8px] text-[#2D241E] sm:text-[56px] lg:text-[72px] lg:leading-[72px]">
+          <h2 className="heading-display text-[#2D241E]">
             Got Questions
           </h2>
         </header>
 
         <div className="flex flex-col">
-          {faqItems.map((item) => (
+          {faqItems.map((item, index) => (
             <article className="border-b border-[rgba(177,179,169,0.5)]" key={item.question}>
-              <div className="flex items-center justify-between gap-6 py-8">
+              <button
+                className="flex w-full items-center justify-between gap-6 py-8 text-left"
+                type="button"
+                aria-expanded={openItem === index}
+                aria-label={openItem === index ? `Hide answer for: ${item.question}` : `Show answer for: ${item.question}`}
+                onClick={() => toggleItem(index)}
+              >
                 <h3 className="font-['Inter'] text-[20px] font-normal leading-7 text-[#31332C]">{item.question}</h3>
                 <span className="shrink-0 font-['Inter'] text-[26px] font-normal leading-none text-[#31332C]" aria-hidden="true">
-                  +
+                  {openItem === index ? '-' : '+'}
                 </span>
-              </div>
-              <p className="pb-8 font-['Inter'] text-sm font-normal leading-[23px] text-[#665E57]">{item.answer}</p>
+              </button>
+              {openItem === index ? (
+                <p className="pb-8 font-['Inter'] text-sm font-normal leading-[23px] text-[#665E57]">{item.answer}</p>
+              ) : null}
             </article>
           ))}
         </div>

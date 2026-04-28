@@ -145,7 +145,7 @@ export function ReliabilitySection() {
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-[12px] font-bold tracking-[3.6px] uppercase text-[#E8410A]">
               RELIABILITY
             </p>
-            <h3 className="font-[family-name:var(--font-space-grotesk)] font-medium text-[60px] leading-[72px] tracking-[1.5px] text-[#31332C]">
+            <h3 className="heading-section text-[#31332C]">
               99.9% Uptime. 
               <br />
               Real  SLA.
