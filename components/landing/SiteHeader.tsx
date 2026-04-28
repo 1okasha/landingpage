@@ -28,7 +28,8 @@ export function SiteHeader() {
         </nav>
 
         <a
-          className="inline-flex h-11 items-center justify-center rounded-[10px] bg-[#2D241E] px-6 font-['Inter'] text-sm font-medium leading-5 text-white"
+          className="inline-flex h-11 items-center justify-center rounded-[10px] bg-[#2D241E] px-6 font-['Inter'] text-sm font-medium leading-5 text-[#FFFFFF]"
+          style={{ color: "#FFFFFF" }}
           href="#pricing"
         >
           Get Early Access

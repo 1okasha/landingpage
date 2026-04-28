@@ -67,43 +67,23 @@
 
 
 
+import Image from "next/image";
+
 const features = [
   {
-    icon: (
-      <svg width="21" height="28" viewBox="0 0 21 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="6" y="0" width="9" height="16" rx="4.5" fill="#E8410A" />
-        <path d="M2 12C2 17.523 6.477 22 12 22C17.523 22 21 17.523 21 12" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-        <line x1="10.5" y1="22" x2="10.5" y2="28" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-        <line x1="6" y1="28" x2="15" y2="28" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <Image src="/mic icon.svg" alt="Speech-to-Text icon" width={21} height={28} priority={false} />,
     title: "Speech-to-Text",
     description:
       "Real-time transcription with sub-second latency. Optimized for diverse accents and noisy environments.",
   },
   {
-    icon: (
-      <svg width="27" height="26" viewBox="0 0 27 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path d="M3 9H7L13 4V22L7 17H3V9Z" fill="#E8410A" />
-        <path d="M17 7C19.5 9 19.5 17 17 19" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-        <path d="M20 4C24 7.5 24 18.5 20 22" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <Image src="/audio icon.svg" alt="Text-to-Speech icon" width={27} height={26} priority={false} />,
     title: "Text-to-Speech",
     description:
       "Human-grade neural synthesis. Latency so low, your users won't know they're talking to an AI.",
   },
   {
-    icon: (
-      <svg width="29" height="30" viewBox="0 0 29 30" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="14.5" cy="15" r="5" stroke="#E8410A" strokeWidth="2" />
-        <circle cx="14.5" cy="15" r="12" stroke="#E8410A" strokeWidth="1.5" strokeDasharray="3 3" />
-        <circle cx="14.5" cy="3" r="2" fill="#E8410A" />
-        <circle cx="14.5" cy="27" r="2" fill="#E8410A" />
-        <circle cx="2.5" cy="15" r="2" fill="#E8410A" />
-        <circle cx="26.5" cy="15" r="2" fill="#E8410A" />
-      </svg>
-    ),
+    icon: <Image src="/llm icon.svg" alt="LLM / AI Brain icon" width={29} height={30} priority={false} />,
     title: "LLM / AI Brain",
     description:
       "Orchestrate state-of-the-art models or bring your own fine-tuned weights for vertical-specific logic.",
@@ -121,33 +101,13 @@ const features = [
       "Persistent storage for logs, audio, and training data. Encrypted at rest and in transit by default.",
   },
   {
-    icon: (
-      <svg width="33" height="32" viewBox="0 0 33 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="16.5" cy="16" r="4" fill="#E8410A" />
-        <path d="M8 8C11 11 11 21 8 24" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-        <path d="M25 8C22 11 22 21 25 24" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-        <path d="M4 4C8.5 8 8.5 24 4 28" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-        <path d="M29 4C24.5 8 24.5 24 29 28" stroke="#E8410A" strokeWidth="2" strokeLinecap="round" />
-      </svg>
-    ),
+    icon: <Image src="/sip trunk icon.svg" alt="SIP Trunks icon" width={33} height={32} priority={false} />,
     title: "SIP Trunks",
     description:
       "Carrier-grade connectivity. Scale from one line to thousands of concurrent calls instantly.",
   },
   {
-    icon: (
-      <svg width="36" height="35" viewBox="0 0 36 35" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <circle cx="18" cy="17.5" r="5" fill="#E8410A" />
-        <circle cx="5" cy="5" r="3" fill="#E8410A" />
-        <circle cx="31" cy="5" r="3" fill="#E8410A" />
-        <circle cx="5" cy="30" r="3" fill="#E8410A" />
-        <circle cx="31" cy="30" r="3" fill="#E8410A" />
-        <line x1="8" y1="5" x2="13" y2="13" stroke="#E8410A" strokeWidth="1.5" />
-        <line x1="28" y1="5" x2="23" y2="13" stroke="#E8410A" strokeWidth="1.5" />
-        <line x1="8" y1="30" x2="13" y2="22" stroke="#E8410A" strokeWidth="1.5" />
-        <line x1="28" y1="30" x2="23" y2="22" stroke="#E8410A" strokeWidth="1.5" />
-      </svg>
-    ),
+    icon: <Image src="/architechture icon.svg" alt="Architecture & Uptime icon" width={36} height={35} priority={false} />,
     title: "Architecture & Uptime —Ours",
     description:
       "99.99% SLA guaranteed. We handle the load balancing and geographic distribution so you don't have to.",
@@ -186,7 +146,7 @@ export function FeaturesSection() {
               {/* Top content block — Figma: flex-col gap 16px */}
               <div className="flex flex-col gap-4">
                 {/* Icon — orange SVG */}
-                <div className="flex-shrink-0">{f.icon}</div>
+                <div className="shrink-0">{f.icon}</div>
 
                 {/* Title — Figma: Space Grotesk 500, 30px, lh 32px, color #FBF9F4, pt 8px */}
                 <h3 className="pt-2 font-(family-name:--font-space-grotesk) text-[30px] font-medium leading-[32px] text-[#FBF9F4]">
