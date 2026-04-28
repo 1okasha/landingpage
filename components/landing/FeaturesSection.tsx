@@ -163,12 +163,12 @@ export function FeaturesSection() {
         {/* ── Section heading block ── */}
         <div className="flex flex-col gap-[25px]">
           {/* Figma: Space Grotesk 400, 72px, lh 88px, ls -1.8px, color #F5F0E8, max-w 717px */}
-          <h2 className="max-w-[717px] font-[family-name:var(--font-space-grotesk)] text-[72px] font-normal leading-[88px] tracking-[-1.8px] text-[#F5F0E8]">
+          <h2 className="max-w-[717px] font-(family-name:--font-space-grotesk)  text-[72px] font-normal leading-[88px] tracking-[-1.8px] text-[#F5F0E8]">
             Every Component Your Provider
           </h2>
 
           {/* Figma: Inter 400, 18px, lh 27px, color #F5F0E8, max-w 729px */}
-          <p className="max-w-[729px] font-[family-name:var(--font-inter)] text-[18px] font-normal leading-[27px] text-[#F5F0E8]">
+          <p className="max-w-[729px] font-(family-name:--font-inter) text-[18px] font-normal leading-[27px] text-[#F5F0E8]">
             Join Unlike Retell, Vapi, or ElevenLabs Voice Agents — we don't lock you into our
             markups. Connect your own accounts for every part of the stack. You keep the cost
             savings, we keep the platform running.
@@ -189,12 +189,12 @@ export function FeaturesSection() {
                 <div className="flex-shrink-0">{f.icon}</div>
 
                 {/* Title — Figma: Space Grotesk 500, 30px, lh 32px, color #FBF9F4, pt 8px */}
-                <h3 className="pt-2 font-[family-name:var(--font-space-grotesk)] text-[30px] font-medium leading-[32px] text-[#FBF9F4]">
+                <h3 className="pt-2 font-(family-name:--font-space-grotesk) text-[30px] font-medium leading-[32px] text-[#FBF9F4]">
                   {f.title}
                 </h3>
 
                 {/* Description — Figma: Inter 400, 16px, lh 26px, color #8A837A */}
-                <p className="font-[family-name:var(--font-inter)] text-[16px] font-normal leading-[26px] text-[#8A837A]">
+                <p className="font-(family-name:--font-inter) text-[16px] font-normal leading-[26px] text-[#8A837A]">
                   {f.description}
                 </p>
               </div>

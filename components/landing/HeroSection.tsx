@@ -59,6 +59,7 @@
 // tsilwind+inlinecss
 
 "use client";
+import { type ChangeEvent, type FormEvent, useState } from "react";
 
 // ─── Exact waveform bars from Figma layer specs ───────────────────────────────
 const waveBars = [
@@ -89,7 +90,86 @@ const waveBars = [
   { left: 386, height: 25,  top: 52,  bg: "#F9CBB5", opacity: 0.6, shadow: false },
 ] as const;
 
+type EarlyAccessFormData = {
+  firstName: string;
+  lastName: string;
+  workEmail: string;
+  phoneNumber: string;
+  companyProjectName: string;
+  primaryUseCase: string;
+  monthlyCallVolume: string;
+  anythingElse: string;
+  website: string;
+};
+
+const initialFormData: EarlyAccessFormData = {
+  firstName: "",
+  lastName: "",
+  workEmail: "",
+  phoneNumber: "",
+  companyProjectName: "",
+  primaryUseCase: "",
+  monthlyCallVolume: "",
+  anythingElse: "",
+  website: "",
+};
+
 export function HeroSection() {
+  const [formData, setFormData] = useState<EarlyAccessFormData>(initialFormData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+
+  const handleInputChange = (
+    event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
+    const { name, value } = event.target;
+    setFormData((previous) => ({ ...previous, [name]: value }));
+  };
+
+  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    setSubmitSuccess(false);
+    setSubmitError(null);
+
+    if (
+      !formData.firstName.trim() ||
+      !formData.lastName.trim() ||
+      !formData.workEmail.trim() ||
+      !formData.companyProjectName.trim() ||
+      !formData.primaryUseCase.trim() ||
+      !formData.monthlyCallVolume.trim()
+    ) {
+      setSubmitError("Please fill in all required fields.");
+      return;
+    }
+
+    setIsSubmitting(true);
+    try {
+      const response = await fetch("/api/early-access", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const payload = (await response.json()) as { error?: string };
+      if (!response.ok) {
+        throw new Error(payload.error ?? "Unable to submit your request right now.");
+      }
+
+      setSubmitSuccess(true);
+      setFormData(initialFormData);
+    } catch (error) {
+      setSubmitError(
+        error instanceof Error ? error.message : "Unable to submit your request right now.",
+      );
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     // Figma: Frame 2087326890 — bg #F4EFE7, height 976px, split 673 / 672
     <section className="flex min-h-screen" id="contact">
@@ -119,7 +199,7 @@ export function HeroSection() {
             }}
           >
             {/* Green dot — Figma: bg #10B981, 8×8px */}
-            <span className="h-2 w-2 flex-shrink-0 rounded-full bg-[#10B981]" />
+            <span className="h-2 w-2 shrink-0 rounded-full bg-[#10B981]" />
             <span
               className="text-[12px] leading-5 text-[#93846D]"
               style={{ fontFamily: "'IBM Plex Mono', monospace" }}
@@ -251,22 +331,63 @@ export function HeroSection() {
           {/* ── Form ── Figma: gap 27px */}
           <form
             className="flex flex-col gap-[27px]"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit}
           >
+            <input
+              type="text"
+              name="website"
+              value={formData.website}
+              onChange={handleInputChange}
+              className="hidden"
+              tabIndex={-1}
+              autoComplete="off"
+              aria-hidden="true"
+            />
             {/* Row 1: First + Last — Figma: Name Row, relative, h 71px */}
             <div className="grid grid-cols-2 gap-[32px]">
-              <FormField label="FIRST NAME" type="text" />
-              <FormField label="LAST NAME" type="text" />
+              <FormField
+                label="FIRST NAME"
+                type="text"
+                name="firstName"
+                value={formData.firstName}
+                onChange={handleInputChange}
+              />
+              <FormField
+                label="LAST NAME"
+                type="text"
+                name="lastName"
+                value={formData.lastName}
+                onChange={handleInputChange}
+              />
             </div>
 
             {/* Row 2: Email + Phone */}
             <div className="grid grid-cols-2 gap-[32px]">
-              <FormField label="WORK EMAIL" type="email" />
-              <FormField label="PHONE NUMBER" type="tel" />
+              <FormField
+                label="WORK EMAIL"
+                type="email"
+                name="workEmail"
+                value={formData.workEmail}
+                onChange={handleInputChange}
+              />
+              <FormField
+                label="PHONE NUMBER"
+                type="tel"
+                name="phoneNumber"
+                value={formData.phoneNumber}
+                onChange={handleInputChange}
+              />
             </div>
 
             {/* Row 3: Company — full width */}
-            <FormField label="COMPANY/PROJECT NAME" type="text" fullWidth />
+            <FormField
+              label="COMPANY/PROJECT NAME"
+              type="text"
+              fullWidth
+              name="companyProjectName"
+              value={formData.companyProjectName}
+              onChange={handleInputChange}
+            />
 
             {/* Row 4: Selects */}
             <div className="grid grid-cols-2 gap-[32px]">
@@ -274,11 +395,17 @@ export function HeroSection() {
                 label="PRIMARY USE CASE"
                 placeholder="Select an option"
                 options={["Customer Support", "Sales Outreach", "Scheduling", "Other"]}
+                name="primaryUseCase"
+                value={formData.primaryUseCase}
+                onChange={handleInputChange}
               />
               <FormSelect
                 label="MONTHLY CALL VOLUME"
                 placeholder="Select volume range"
                 options={["< 1,000", "1,000 – 10,000", "10,000 – 100,000", "100,000+"]}
+                name="monthlyCallVolume"
+                value={formData.monthlyCallVolume}
+                onChange={handleInputChange}
               />
             </div>
 
@@ -286,6 +413,9 @@ export function HeroSection() {
             <div className="flex flex-col gap-2">
               <FieldLabel>ANYTHING ELSE?</FieldLabel>
               <textarea
+                name="anythingElse"
+                value={formData.anythingElse}
+                onChange={handleInputChange}
                 rows={4}
                 className="w-full resize-none rounded-[10px] px-3.5 py-3 text-[16px] leading-6 text-[#FFF6F2] outline-none transition-colors"
                 style={{
@@ -301,11 +431,28 @@ export function HeroSection() {
                        Inter 800, 12px, letter-spacing 1.2px, uppercase, color #fff */}
             <button
               type="submit"
-              className="flex w-full items-center justify-center rounded-[41px] bg-[#E8410A] py-3 text-[12px] font-extrabold uppercase tracking-[1.2px] text-white transition-colors hover:bg-[#c93709] active:scale-[0.98]"
+              disabled={isSubmitting}
+              className="flex w-full items-center justify-center rounded-[41px] bg-[#E8410A] py-3 text-[12px] font-extrabold uppercase tracking-[1.2px] text-white transition-colors hover:bg-[#c93709] disabled:cursor-not-allowed disabled:opacity-70 active:scale-[0.98]"
               style={{ fontFamily: "'Inter', sans-serif", minHeight: 48 }}
             >
-              REQUEST EARLY ACCESS
+              {isSubmitting ? "SUBMITTING..." : "REQUEST EARLY ACCESS"}
             </button>
+            {submitError && (
+              <p
+                className="text-[13px] leading-5 text-[#ffb5b5]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                {submitError}
+              </p>
+            )}
+            {submitSuccess && (
+              <p
+                className="text-[13px] leading-5 text-[#9bffbe]"
+                style={{ fontFamily: "'Inter', sans-serif" }}
+              >
+                Thanks! Your request has been received.
+              </p>
+            )}
           </form>
 
         </div>
@@ -333,10 +480,16 @@ function FormField({
   label,
   type,
   fullWidth,
+  name,
+  value,
+  onChange,
 }: {
   label: string;
   type: string;
   fullWidth?: boolean;
+  name: keyof EarlyAccessFormData;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLInputElement>) => void;
 }) {
   return (
     // Figma: container gap 8px, h 71px
@@ -345,6 +498,9 @@ function FormField({
       {/* Input — Figma: h 48px, bg rgba(49,51,44,0.5), border-radius 10px */}
       <input
         type={type}
+        name={name}
+        value={value}
+        onChange={onChange}
         className="h-[48px] w-full rounded-[10px] px-3.5 text-[16px] text-[#FFF6F2] outline-none transition-colors"
         style={{
           background: "rgba(49,51,44,0.5)",
@@ -359,10 +515,16 @@ function FormSelect({
   label,
   placeholder,
   options,
+  name,
+  value,
+  onChange,
 }: {
   label: string;
   placeholder: string;
   options: string[];
+  name: keyof EarlyAccessFormData;
+  value: string;
+  onChange: (event: ChangeEvent<HTMLSelectElement>) => void;
 }) {
   return (
     // Figma: container gap 8px
@@ -372,7 +534,9 @@ function FormSelect({
                            Inter 400, 16px, color #FFF6F2 */}
       <div className="relative">
         <select
-          defaultValue=""
+          name={name}
+          value={value}
+          onChange={onChange}
           className="h-[48px] w-full appearance-none rounded-[10px] px-3.5 pr-10 text-[16px] text-[#FFF6F2] outline-none transition-colors"
           style={{
             background: "rgba(49,51,44,0.5)",
