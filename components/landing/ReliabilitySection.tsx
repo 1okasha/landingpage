@@ -83,7 +83,7 @@ const reliabilityFeatures = [
         <path d="M5 10L7 12L11 8" stroke="#685C55" strokeWidth="1.5" strokeLinecap="round" />
       </svg>
     ),
-    title: "99.9% Uptime SLA",
+    title: "99.9% Uptime",
     desc: "Contractual guarantee across the orchestration layer",
   },
 ];
@@ -145,7 +145,7 @@ export function ReliabilitySection() {
             <h3 className="heading-section text-[#31332C]">
               99.9% Uptime. 
               <br />
-              Real  SLA.
+              
             </h3>
             <p className="font-[family-name:var(--font-inter)] text-[18px] leading-[29px] text-[#5E6058] max-w-[512px]">
               We obsess over the thing you can't BYOK: infrastructure reliability. Multi-region failover, automatic retries, and proactive alerts so your agents never go silent.

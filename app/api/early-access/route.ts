@@ -70,3 +70,15 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request payload." }, { status: 400 });
   }
 }
+
+export async function GET() {
+  const { count, error } = await supabaseAdmin
+    .from("early_access_requests")
+    .select("*", { count: "exact", head: true });
+
+  if (error) {
+    return NextResponse.json({ error: "Failed to fetch waitlist count." }, { status: 500 });
+  }
+
+  return NextResponse.json({ count: count ?? 0 });
+}

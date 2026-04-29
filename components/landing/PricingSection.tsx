@@ -186,12 +186,17 @@ export function PricingSection() {
         </div>
 
         {/* Pricing cards */}
-        <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-[63px]">
+        <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:justify-center lg:gap-[63px]">
           {/* Standard */}
           <div
-            className="flex h-auto w-full rounded-[28px] p-6 sm:p-10 lg:h-[633px] lg:w-[463px] lg:rounded-[46px] lg:p-[56px] lg:flex-col lg:justify-between"
+            className="relative flex h-auto w-full overflow-visible rounded-[28px] p-6 sm:p-10 lg:h-[633px] lg:w-[463px] lg:rounded-[46px] lg:p-[56px] lg:flex-col lg:justify-between"
             style={{ background: "#FDFAF2", border: "1px solid #D1CCC0" }}
           >
+            {/* SCALABLE badge */}
+            <div className="absolute right-6 top-[-14px] rounded-[12px] bg-[#E8410A] px-[16px] py-[4px] lg:right-[42px]">
+              <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[2px] uppercase text-white">SCALABLE</span>
+            </div>
+
             <div className="flex flex-col gap-[32px] pb-[48px]">
               <p className="font-[family-name:var(--font-ibm-plex-mono)] text-[14px] tracking-[1.4px] uppercase text-[#7D746D]">
                 STANDARD BYOC
@@ -201,7 +206,7 @@ export function PricingSection() {
                 <span className="font-[family-name:var(--font-dm-sans)] text-[16px] leading-[24px] text-[#7D746D]">/ min</span>
               </div>
               <div className="flex flex-col gap-[24px] pt-[8px]">
-                {["All BYOK providers", "Unlimited concurrent calls", "70+ languages supported", "Standard support access"].map((item) => (
+                {["All BYOK providers", "Unlimited concurrent calls", "Standard support access"].map((item) => (
                   <div key={item} className="flex flex-row items-start gap-[16px]">
                     <CheckIconDark />
                     <span className="font-[family-name:var(--font-inter)] text-[14px] leading-[20px] text-[#2D241E]">{item}</span>

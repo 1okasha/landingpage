@@ -110,7 +110,7 @@ const features = [
     icon: <Image src="/architechture icon.svg" alt="Architecture & Uptime icon" width={36} height={35} priority={false} />,
     title: "Architecture & Uptime —Ours",
     description:
-      "99.99% SLA guaranteed. We handle the load balancing and geographic distribution so you don't have to.",
+      "99.99% uptime guaranteed. We handle the load balancing and geographic distribution so you don't have to.",
   },
 ];
 

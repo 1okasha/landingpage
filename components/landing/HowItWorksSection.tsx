@@ -124,16 +124,16 @@ export function HowItWorksSection() {
                 {step.number}
               </span>
 
-              {/* Arrow between steps — Figma: small → icon at ~17.85% top, right edge */}
-              {i < steps.length - 1 && (
-                <span
-                  className="absolute right-0 top-0 hidden text-sm leading-none text-[#FBF9F4] lg:block lg:right-[-18px] lg:top-[17.85%]"
-                  aria-hidden="true"
-                >
-                  →
-                </span>
-              )}
-
+              {/* Arrow between steps — centered between columns, vertically aligned with number */}
+{i < steps.length - 1 && (
+  <span
+    className="absolute hidden lg:flex items-center justify-center text-[#FBF9F4] text-sm leading-none"
+    style={{ right: "-28px", top: "28px", width: "56px" }}
+    aria-hidden="true"
+  >
+    →
+  </span>
+)}
               {/* Title — Figma: Space Grotesk 400, 30px, lh 30px, color #FBF9F4, pt 16px pb 12px */}
               <h3 className="whitespace-pre-line pb-3 pt-4 font-(family-name:--font-space-grotesk) text-[24px] font-normal leading-[28px] text-[#FBF9F4] lg:text-[30px] lg:leading-[30px]">
                 {step.title}

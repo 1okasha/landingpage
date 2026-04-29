@@ -59,7 +59,7 @@
 // tsilwind+inlinecss
 
 "use client";
-import { type ChangeEvent, type FormEvent, useState } from "react";
+import { type ChangeEvent, type FormEvent, useEffect, useState } from "react";
 
 // ─── Exact waveform bars from Figma layer specs ───────────────────────────────
 const waveBars = [
@@ -119,6 +119,33 @@ export function HeroSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitError, setSubmitError] = useState<string | null>(null);
   const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [waitlistCount, setWaitlistCount] = useState(240);
+
+  useEffect(() => {
+    let isMounted = true;
+
+    const fetchWaitlistCount = async () => {
+      try {
+        const response = await fetch("/api/early-access", { cache: "no-store" });
+        if (!response.ok) {
+          return;
+        }
+
+        const payload = (await response.json()) as { count?: number };
+        if (isMounted && typeof payload.count === "number") {
+          setWaitlistCount(payload.count);
+        }
+      } catch {
+        // Keep fallback value when count request fails.
+      }
+    };
+
+    void fetchWaitlistCount();
+
+    return () => {
+      isMounted = false;
+    };
+  }, []);
 
   const handleInputChange = (
     event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
@@ -249,7 +276,7 @@ export function HeroSection() {
                 className="flex h-[42px] w-[42px] items-center justify-center rounded-full border-2 border-[#F5F4ED] bg-[#E2E3D9] text-[10px] font-bold text-[#5E6058]"
                 style={{ marginLeft: -12, fontFamily: "'Plus Jakarta Sans', sans-serif" }}
               >
-                +240
+                +{waitlistCount}
               </span>
             </div>
 
@@ -261,7 +288,7 @@ export function HeroSection() {
                 letterSpacing: "-0.3px",
               }}
             >
-              Join <strong className="font-bold">240+ teams</strong> on the waitlist
+              Join <strong className="font-bold">{waitlistCount}+ teams</strong> on the waitlist
             </span>
           </div>
 
