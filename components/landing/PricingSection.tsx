@@ -162,10 +162,7 @@ const CheckIconDark = () => (
 export function PricingSection() {
   return (
     <section className="bg-[#F4EFE7] py-0" id="pricing">
-      <div
-        className="flex flex-col items-center gap-[57px]"
-        style={{ width: 1216, margin: "0 auto", paddingTop: 69, paddingBottom: 69 }}
-      >
+      <div className="mx-auto flex w-full max-w-[1216px] flex-col items-center gap-10 px-6 py-12 sm:px-8 lg:gap-[57px] lg:py-[69px]">
         {/* Header */}
         <div className="flex flex-col items-center gap-[16px] w-full">
           <div className="flex flex-col items-center w-full">
@@ -174,14 +171,10 @@ export function PricingSection() {
             </p>
           </div>
           <div className="flex flex-col items-center gap-[6px] w-full">
-            <h2
-              className="heading-display text-[#2D241E] text-center w-full"
-            >
+            <h2 className="heading-display w-full text-center text-[#2D241E]">
               Simple pricing for AI voice agents.
             </h2>
-            <h2
-              className="heading-display text-[#2D241E] text-center w-full"
-            >
+            <h2 className="heading-display w-full text-center text-[#2D241E]">
               Scale conversations without limits.
             </h2>
           </div>
@@ -193,10 +186,10 @@ export function PricingSection() {
         </div>
 
         {/* Pricing cards */}
-        <div className="flex flex-row items-start gap-[63px]">
+        <div className="flex w-full flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-[63px]">
           {/* Standard */}
           <div
-            className="w-[463px] h-[633px] rounded-[46px] p-[56px] flex flex-col justify-between"
+            className="flex h-auto w-full rounded-[28px] p-6 sm:p-10 lg:h-[633px] lg:w-[463px] lg:rounded-[46px] lg:p-[56px] lg:flex-col lg:justify-between"
             style={{ background: "#FDFAF2", border: "1px solid #D1CCC0" }}
           >
             <div className="flex flex-col gap-[32px] pb-[48px]">
@@ -226,13 +219,11 @@ export function PricingSection() {
 
           {/* Enterprise */}
           <div
-            className="w-[463px] h-[633px] rounded-[46px] p-[56px] flex flex-col justify-between relative overflow-visible"
+            className="relative flex h-auto w-full overflow-visible rounded-[28px] p-6 sm:p-10 lg:h-[633px] lg:w-[463px] lg:rounded-[46px] lg:p-[56px] lg:flex-col lg:justify-between"
             style={{ background: "#1A1208", border: "2px solid #2D241E", boxShadow: "0px 20px 25px -5px rgba(0,0,0,0.1), 0px 8px 10px -6px rgba(0,0,0,0.1)" }}
           >
             {/* SCALABLE badge */}
-            <div
-              className="absolute right-[42px] top-[-14px] bg-[#E8410A] rounded-[12px] px-[16px] py-[4px]"
-            >
+            <div className="absolute right-6 top-[-14px] rounded-[12px] bg-[#E8410A] px-[16px] py-[4px] lg:right-[42px]">
               <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[2px] uppercase text-white">SCALABLE</span>
             </div>
 
@@ -270,15 +261,15 @@ export function PricingSection() {
         </div>
 
         {/* Comparison table */}
-        <div className="flex flex-col gap-[23px] ">
+        <div className="flex w-full flex-col gap-[23px]">
           <p className="font-[family-name:var(--font-ibm-plex-mono)] font-normal text-[12px] leading-[16px] tracking-[3.6px] uppercase text-[#E8410A] w-full">
             WHY LEAPS DEV VS COMPETITORS
           </p>
           <div
-            className="w-full rounded-[24px] overflow-hidden"
+            className="w-full overflow-x-auto rounded-[24px]"
             style={{ background: "rgba(239,235,228,0.6)", border: "1px solid #D9D5CE" }}
           >
-            <table className="w-full border-collapse">
+            <table className="w-full min-w-[900px] border-collapse">
               <thead>
                 <tr style={{ borderBottom: "1px solid #D9D5CE" }}>
                   <th className="text-left px-[32px] py-[24px] w-[276px]">

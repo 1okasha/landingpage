@@ -98,14 +98,14 @@ const mockCards = [
 export function ReliabilitySection() {
   return (
     <section className="bg-[#F4EFE7] py-0">
-      <div className="px-[65px] py-[69px] flex flex-row items-center gap-[97px]">
+      <div className="flex flex-col items-stretch gap-10 px-6 py-12 sm:px-8 lg:flex-row lg:items-center lg:gap-[97px] lg:px-[65px] lg:py-[69px]">
         {/* LEFT: UI Mockup */}
         <div
-          className="w-[523px] h-[668px] rounded-[32px] relative shrink-0"
+          className="relative order-2 w-full max-w-[523px] self-center rounded-[24px] p-4 sm:p-6 lg:order-1 lg:h-[668px] lg:shrink-0 lg:rounded-[32px] lg:p-0"
           style={{ background: "#110D0B", boxShadow: "0px 25px 50px -12px rgba(0,0,0,0.25)" }}
         >
           {/* Top bar */}
-          <div className="absolute top-[48px] left-[42px] right-[42px] flex flex-row justify-between items-center">
+          <div className="mb-4 flex flex-row items-center justify-between lg:absolute lg:left-[42px] lg:right-[42px] lg:top-[48px]">
             <div className="bg-white/10 rounded-full px-[12px] py-[4px]">
               <span className="font-[family-name:var(--font-inter)] text-[10px] tracking-[0.5px] text-white/60">Multi Region</span>
             </div>
@@ -115,17 +115,14 @@ export function ReliabilitySection() {
           </div>
 
           {/* 2x2 grid of tiles */}
-          <div
-            className="absolute flex flex-row flex-wrap gap-x-[19px] gap-y-[20px] w-[439px]"
-            style={{ left: "50%", transform: "translateX(-50%)", top: 87 }}
-          >
+          <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-x-[19px] sm:gap-y-[20px] lg:absolute lg:left-1/2 lg:top-[87px] lg:w-[439px] lg:-translate-x-1/2">
             {mockCards.map((c) => (
               <div
                 key={c.num}
-                className="w-[210px] h-[261px] rounded-[16px] relative"
+                className="relative h-auto min-h-[220px] w-full rounded-[16px] sm:h-[261px]"
                 style={{ background: "#241C13", border: "2px solid #362E25" }}
               >
-                <div className="absolute left-[24px] top-[24px] flex flex-col gap-[31px] w-[162px]">
+                <div className="absolute left-[24px] top-[24px] flex w-[calc(100%-48px)] flex-col gap-[20px] sm:w-[162px] sm:gap-[31px]">
                   <div className="w-[35px] h-[35px] rounded-full bg-[#402011] flex items-center justify-center">
                     <span className="font-[family-name:var(--font-dm-sans)] font-bold text-[14px] text-[#FBF9F4]/80">{c.num}</span>
                   </div>
@@ -140,7 +137,7 @@ export function ReliabilitySection() {
         </div>
 
         {/* RIGHT: Copy */}
-        <div className="flex flex-col gap-[48px] w-[544px] shrink-0">
+        <div className="order-1 flex w-full max-w-[544px] flex-col gap-[36px] lg:order-2 lg:shrink-0 lg:gap-[48px]">
           <div className="flex flex-col gap-[23.4px]">
             <p className="font-[family-name:var(--font-ibm-plex-mono)] text-[12px] font-bold tracking-[3.6px] uppercase text-[#E8410A]">
               RELIABILITY
@@ -158,7 +155,7 @@ export function ReliabilitySection() {
           {/* Feature list */}
           <div className="flex flex-col gap-[24px]">
             {reliabilityFeatures.map((f) => (
-              <div key={f.title} className="flex flex-row items-center gap-0 w-[544px] h-[36px]">
+              <div key={f.title} className="flex h-auto w-full flex-row items-start gap-0">
                 <div className="shrink-0 w-[18px] flex items-center justify-center mr-[16px]">
                   {f.icon}
                 </div>

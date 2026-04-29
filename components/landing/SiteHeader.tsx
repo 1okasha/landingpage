@@ -32,7 +32,7 @@ export function SiteHeader() {
           style={{ color: "#FFFFFF" }}
           href="#pricing"
         >
-          Get Early Access
+          Get Started
         </a>
       </div>
     </header>

@@ -172,18 +172,15 @@ export function HeroSection() {
 
   return (
     // Figma: Frame 2087326890 — bg #F4EFE7, height 976px, split 673 / 672
-    <section className="flex min-h-screen" id="contact">
+    <section className="flex min-h-screen flex-col lg:flex-row" id="contact">
 
       {/* ════════════════════════════════════════════
           LEFT — Beige Intro Section
           Figma: padding 96px 80px, bg #F4EFE7, width 673px
           ════════════════════════════════════════════ */}
-      <div
-        className="flex flex-col justify-center bg-[#F4EFE7] px-20 py-24"
-        style={{ width: 673, flexShrink: 0 }}
-      >
+      <div className="flex w-full flex-col justify-center bg-[#F4EFE7] px-6 py-12 sm:px-8 md:px-12 lg:max-w-[673px] lg:px-16 lg:py-20 xl:px-20 xl:py-24">
         {/* Container — gap 32px, max-width 513px */}
-        <div className="flex flex-col gap-8" style={{ maxWidth: 513 }}>
+        <div className="mx-auto flex w-full max-w-[513px] flex-col gap-8">
 
           {/* ── Beta Badge ──
               Figma: bg rgba(255,255,255,0.5), border #E8E2D9,
@@ -212,7 +209,7 @@ export function HeroSection() {
               Figma: Space Grotesk 700, 72px, line-height 91px,
                      letter-spacing -1.92px, color #2D241E */}
           <h1
-            className="text-[72px] font-bold leading-[91px] text-[#2D241E]"
+            className="text-[40px] font-bold leading-[1.15] text-[#2D241E] sm:text-[52px] lg:text-[72px] lg:leading-[91px]"
             style={{
               fontFamily: "'Space Grotesk', sans-serif",
               letterSpacing: "-1.92px",
@@ -237,7 +234,7 @@ export function HeroSection() {
 
           {/* ── Social Proof ──
               Figma: flex-row, items-center, padding 16px 0 0, gap 16px, h 58px */}
-          <div className="flex items-center gap-4 pt-4">
+          <div className="flex flex-col items-start gap-4 pt-4 sm:flex-row sm:items-center">
             {/* Avatar stack — Figma: 42×42, border 2px #F5F4ED, -12px margin */}
             <div className="flex">
               {["#A87878", "#7AA987", "#8899BB"].map((bg, i) => (
@@ -258,7 +255,7 @@ export function HeroSection() {
 
             {/* Text — Figma: Inter 400, 22px, line-height 18px, letter-spacing -0.3px, color #665E57 */}
             <span
-              className="text-[22px] leading-[18px] text-[#665E57]"
+              className="text-[18px] leading-[22px] text-[#665E57] sm:text-[22px] sm:leading-[18px]"
               style={{
                 fontFamily: "'Inter', sans-serif",
                 letterSpacing: "-0.3px",
@@ -271,8 +268,8 @@ export function HeroSection() {
           {/* ── Waveform ──
               Figma: Frame 2087326934 — 513×171px container
                      Group 5 inside — absolute 392×135, centered */}
-          <div className="relative" style={{ width: 513, height: 171 }} aria-hidden="true">
-            <div className="absolute" style={{ width: 392, height: 135, left: "50%", top: "50%", transform: "translate(-50%,-50%)" }}>
+          <div className="relative h-[171px] w-full max-w-[513px] overflow-hidden" aria-hidden="true">
+            <div className="absolute left-1/2 top-1/2 h-[135px] w-[392px] -translate-x-1/2 -translate-y-1/2 scale-[0.82] sm:scale-100">
               {waveBars.map((bar, i) => (
                 <span
                   key={i}
@@ -301,9 +298,9 @@ export function HeroSection() {
           Figma: bg #1A1208, padding 96px 80px,
                  flex-col justify-center, flex-1
           ════════════════════════════════════════════ */}
-      <div className="flex flex-1 flex-col justify-center bg-[#1A1208] px-20 py-24">
+      <div className="flex w-full flex-1 flex-col justify-center bg-[#1A1208] px-6 py-12 sm:px-8 md:px-12 lg:px-16 lg:py-20 xl:px-20 xl:py-24">
         {/* Container — Figma: gap 16px, max-width 512px, pb 16px */}
-        <div className="flex w-full flex-col gap-4" style={{ maxWidth: 512 }}>
+        <div className="mx-auto flex w-full max-w-[512px] flex-col gap-4">
 
           {/* ── Form Heading ──
               Figma: Space Grotesk 400, 30px, line-height 72px,
@@ -344,7 +341,7 @@ export function HeroSection() {
               aria-hidden="true"
             />
             {/* Row 1: First + Last — Figma: Name Row, relative, h 71px */}
-            <div className="grid grid-cols-2 gap-[32px]">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
               <FormField
                 label="FIRST NAME"
                 type="text"
@@ -362,7 +359,7 @@ export function HeroSection() {
             </div>
 
             {/* Row 2: Email + Phone */}
-            <div className="grid grid-cols-2 gap-[32px]">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
               <FormField
                 label="WORK EMAIL"
                 type="email"
@@ -390,7 +387,7 @@ export function HeroSection() {
             />
 
             {/* Row 4: Selects */}
-            <div className="grid grid-cols-2 gap-[32px]">
+            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 sm:gap-8">
               <FormSelect
                 label="PRIMARY USE CASE"
                 placeholder="Select an option"

@@ -117,18 +117,18 @@ const features = [
 export function FeaturesSection() {
   return (
     // Figma: bg #1A1208, px ~53px, py ~72px
-    <section className="bg-[#1A1208] px-[53px] py-[72px]" id="features">
-      <div className="mx-auto max-w-[1239px] flex flex-col gap-[27px]">
+    <section className="bg-[#1A1208] px-6 py-12 sm:px-8 lg:px-[53px] lg:py-[72px]" id="features">
+      <div className="mx-auto flex w-full max-w-[1239px] flex-col gap-8 lg:gap-[27px]">
 
         {/* ── Section heading block ── */}
         <div className="flex flex-col gap-[25px]">
           {/* Figma: Space Grotesk 400, 72px, lh 88px, ls -1.8px, color #F5F0E8, max-w 717px */}
-          <h2 className="max-w-[717px] font-(family-name:--font-space-grotesk)  text-[72px] font-normal leading-[88px] tracking-[-1.8px] text-[#F5F0E8]">
+          <h2 className="max-w-[717px] font-(family-name:--font-space-grotesk) text-[38px] font-normal leading-[1.15] tracking-[-1px] text-[#F5F0E8] sm:text-[52px] lg:text-[72px] lg:leading-[88px] lg:tracking-[-1.8px]">
             Every Component Your Provider
           </h2>
 
           {/* Figma: Inter 400, 18px, lh 27px, color #F5F0E8, max-w 729px */}
-          <p className="max-w-[729px] font-(family-name:--font-inter) text-[18px] font-normal leading-[27px] text-[#F5F0E8]">
+          <p className="max-w-[729px] font-(family-name:--font-inter) text-[16px] font-normal leading-[26px] text-[#F5F0E8] sm:text-[18px] sm:leading-[27px]">
             Join Unlike Retell, Vapi, or ElevenLabs Voice Agents — we don't lock you into our
             markups. Connect your own accounts for every part of the stack. You keep the cost
             savings, we keep the platform running.
@@ -137,11 +137,11 @@ export function FeaturesSection() {
 
         {/* ── 3-col card grid ──
             Figma: each card 413×355px, bg #1F170D, border 0.5px #443827, p 40px */}
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
           {features.map((f) => (
             <article
               key={f.title}
-              className="flex min-h-[355px] flex-col justify-between border-[0.5px] border-[#443827] bg-[#1F170D] p-10 shadow-[0px_1px_2px_rgba(0,0,0,0.05)]"
+              className="flex min-h-[320px] flex-col justify-between border-[0.5px] border-[#443827] bg-[#1F170D] p-6 shadow-[0px_1px_2px_rgba(0,0,0,0.05)] sm:min-h-[355px] sm:p-8 lg:p-10"
             >
               {/* Top content block — Figma: flex-col gap 16px */}
               <div className="flex flex-col gap-4">
@@ -149,7 +149,7 @@ export function FeaturesSection() {
                 <div className="shrink-0">{f.icon}</div>
 
                 {/* Title — Figma: Space Grotesk 500, 30px, lh 32px, color #FBF9F4, pt 8px */}
-                <h3 className="pt-2 font-(family-name:--font-space-grotesk) text-[30px] font-medium leading-[32px] text-[#FBF9F4]">
+                <h3 className="pt-2 font-(family-name:--font-space-grotesk) text-[24px] font-medium leading-[30px] text-[#FBF9F4] lg:text-[30px] lg:leading-[32px]">
                   {f.title}
                 </h3>
 

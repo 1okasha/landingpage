@@ -235,10 +235,7 @@
 
 
 
-import Image from "next/image";
-
 const EYEBROW = "DEVELOPER EXPERIENCE";
-const SECTION_LABEL = "UPLATFORM CAPABILITIES";
 
 const features = [
   {
@@ -285,14 +282,14 @@ export function ProductionSection() {
   return (
     <section className="bg-[#F4EFE7] py-0" id="production">
       {/* Section label */}
-      <div className="px-[65px] pt-[69px] pb-0">
+      <div className="px-6 pb-0 pt-12 sm:px-8 lg:px-[65px] lg:pt-[69px]">
         <p
           className="font-(family-name:--font-ibm-plex-mono) text-[12px] font-normal tracking-[3.6px] uppercase text-[#E8410A] mb-[16px]"
         >
           UPLATFORM CAPABILITIES
         </p>
         <h2
-          className="heading-display text-[#2D241E] mb-[65px]"
+          className="heading-display mb-10 text-[#2D241E] lg:mb-[65px]"
         >
           Built for Production.
           <br />
@@ -301,9 +298,9 @@ export function ProductionSection() {
       </div>
 
       {/* Two-column layout */}
-      <div className="px-[65px] pb-[69px] flex flex-row items-center gap-[97px]">
+      <div className="flex flex-col items-stretch gap-10 px-6 pb-12 sm:px-8 lg:flex-row lg:items-center lg:gap-[97px] lg:px-[65px] lg:pb-[69px]">
         {/* LEFT: Copy */}
-        <div className="flex flex-col gap-0 w-[544px] shrink-0">
+        <div className="order-2 flex w-full max-w-[544px] flex-col gap-0 lg:order-1 lg:shrink-0">
           {/* Eyebrow + heading + body */}
           <div className="flex flex-col gap-[23.4px] mb-[48px]">
             <p
@@ -345,13 +342,13 @@ export function ProductionSection() {
 
         {/* RIGHT: UI Mockup panel */}
         <div
-          className="w-[523px] h-[542px] rounded-[32px] flex flex-col justify-center items-center px-[42px] pt-[48px] pb-[55px] shrink-0"
+          className="order-1 flex w-full max-w-[523px] flex-col items-center justify-center rounded-[24px] px-4 py-6 sm:px-8 sm:pt-10 sm:pb-12 lg:order-2 lg:h-[542px] lg:shrink-0 lg:rounded-[32px] lg:px-[42px] lg:pt-[48px] lg:pb-[55px]"
           style={{
             background: "linear-gradient(0deg, rgba(255,255,255,0.002), rgba(255,255,255,0.002)), #110D0B",
             boxShadow: "0px 25px 50px -12px rgba(0,0,0,0.25)",
           }}
         >
-          <div className="w-[439px] h-[439px] flex flex-col">
+          <div className="flex w-full max-w-[439px] flex-col">
             {/* Top bar */}
             <div className="flex flex-row justify-between items-center mb-[16px]">
               <div className="bg-white/10 rounded-full px-[12px] py-[4px]">
@@ -367,13 +364,13 @@ export function ProductionSection() {
             </div>
 
             {/* Grid of cards */}
-            <div className="flex flex-row flex-wrap gap-x-[19px] gap-y-[20px] w-[439px]">
+            <div className="grid w-full grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-x-[19px] sm:gap-y-[20px]">
               {/* Card 2: Integrations */}
               <div
-                className="w-[210px] h-[261px] rounded-[16px] relative"
+                className="relative h-auto min-h-[220px] w-full rounded-[16px] sm:h-[261px]"
                 style={{ background: "#241C13", border: "2px solid #362E25" }}
               >
-                <div className="absolute left-[24px] top-[24px] flex flex-col gap-[31px] w-[162px]">
+                <div className="absolute left-[24px] top-[24px] flex w-[calc(100%-48px)] flex-col gap-[20px] sm:w-[162px] sm:gap-[31px]">
                   <div className="w-[35px] h-[35px] rounded-full bg-[#402011] flex items-center justify-center">
                     <span className="font-(family-name:--font-dm-sans) font-bold text-[14px] leading-[15px] text-[#FBF9F4]/80">2</span>
                   </div>
@@ -388,10 +385,10 @@ export function ProductionSection() {
 
               {/* Card 3: Monitoring */}
               <div
-                className="w-[210px] h-[261px] rounded-[16px] relative"
+                className="relative h-auto min-h-[220px] w-full rounded-[16px] sm:h-[261px]"
                 style={{ background: "#241C13", border: "2px solid #362E25" }}
               >
-                <div className="absolute left-[24px] top-[24px] flex flex-col gap-[31px] w-[162px]">
+                <div className="absolute left-[24px] top-[24px] flex w-[calc(100%-48px)] flex-col gap-[20px] sm:w-[162px] sm:gap-[31px]">
                   <div className="w-[35px] h-[35px] rounded-full bg-[#402011] flex items-center justify-center">
                     <span className="font-(family-name:--font-dm-sans) font-bold text-[14px] leading-[15px] text-[#FBF9F4]/80">3</span>
                   </div>
@@ -406,13 +403,10 @@ export function ProductionSection() {
 
               {/* Card 4: Deployment (wide) */}
               <div
-                className="w-[439px] h-[119px] rounded-[16px] relative"
+                className="relative w-full rounded-[16px] sm:col-span-2 sm:h-[119px]"
                 style={{ background: "#241C13", border: "2px solid #362E25" }}
               >
-                <div
-                  className="absolute flex flex-col gap-[11px] w-[381px]"
-                  style={{ left: 24, top: "50%", transform: "translateY(-50%)" }}
-                >
+                <div className="flex flex-col gap-[11px] p-6 sm:absolute sm:left-6 sm:top-1/2 sm:w-[381px] sm:-translate-y-1/2 sm:p-0">
                   <div className="flex flex-row items-center gap-[31px]">
                     <div className="w-[35px] h-[35px] rounded-full bg-[#402011] flex items-center justify-center shrink-0">
                       <span className="font-(family-name:--font-dm-sans) font-bold text-[14px] leading-[15px] text-[#FBF9F4]/80">4</span>
